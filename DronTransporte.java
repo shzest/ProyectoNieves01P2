@@ -1,6 +1,6 @@
 public class DronTransporte extends Vehiculo implements IConectable {
-    public DronTransporte(String id) {
-        super(id);
+    public DronTransporte( String id, String tipoVehiculo, String modelo, String velMax) {
+        super(id, tipoVehiculo, modelo, velMax);
     }
 
     @Override
