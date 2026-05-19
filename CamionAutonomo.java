@@ -1,6 +1,6 @@
 public class CamionAutonomo extends Vehiculo {
-    public CamionAutonomo(String id) {
-        super(id);
+    public CamionAutonomo( String id, String tipoVehiculo, String modelo, String velMax) {
+        super(id, tipoVehiculo, modelo, velMax);
     }
 
     @Override
