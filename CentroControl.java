@@ -6,8 +6,40 @@ public class CentroControl {
         flota = new ArrayList<>();
     }
 
-    public void registrarUnidad( Vehiculo v) {
+    // CRUD
+    public void registrarVehiculo(Vehiculo v) {
         flota.add(v);
+    }
+
+    public void listarVehiculos(){
+        flota.forEach(veh -> {
+            System.out.println("ID #"+veh.getId()+" | [Tipo: "+veh.getTipoVehiculo()+" ] | [Modelo: "+veh.getModelo()+" ] | [Velocidad Maxima: "+veh.getVelMax()+" ]");
+        });
+    }
+
+    public Vehiculo buscarVehiculo(String id) {
+        for ( Vehiculo veh :flota ){
+            if (veh.getId().equals(id)){
+                return veh;
+            }
+        }
+        System.out.println("Vehiculo no encontrado.");
+        return null;
+    }
+
+    public void modificarDatosVehiculo(String id,String tipoVehiculo, String modelo, String velMaxima  ){
+        Vehiculo veh = buscarVehiculo(id);
+        if (veh==null){
+            return;
+        }
+        veh.setTipoVehiculo(tipoVehiculo);
+        veh.setModelo(modelo);
+        veh.setVelMax(velMaxima);
+        System.out.println("Los datos del vehiculo han sido actualizados correctamente.");
+    }
+
+    public void eliminarVehiculo (String id){
+        flota.remove(buscarVehiculo(id));
     }
 
     public void monitorearFlota() {
