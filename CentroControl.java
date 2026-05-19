@@ -51,7 +51,7 @@ public class CentroControl {
         );
     }
 
-    public void listaId(){
+    public void listaIds(){
         System.out.println(" Lista de Id's:");
         flota.stream()
                 .map( veh -> veh.getId())
@@ -68,7 +68,22 @@ public class CentroControl {
         flota.stream().filter(veh -> veh.getTipoVehiculo().equalsIgnoreCase(tipo))
                 .forEach(veh -> System.out.println("[ID #"+veh.getId()+" ] | [Tipo: "+veh.getTipoVehiculo()+" ] | [Modelo: "+veh.getModelo()+" ]"));
     }
-    
+
+    // ORDENAMIENTO
+    public void ordenarPorId(){
+        flota.stream().sorted((v1 , v2) -> v1.getId().compareTo(v2.getId()))
+                .forEach( veh -> {
+                    System.out.println("[ID #"+veh.getId()+" ] | [Tipo: "+veh.getTipoVehiculo()+" ] | [Modelo: "+veh.getModelo()+" ]");
+                });
+    }
+
+    public void ordenarPorTipo(){
+        flota.stream().sorted((v1 , v2) -> v1.getTipoVehiculo().compareTo(v2.getTipoVehiculo()))
+                .forEach( veh -> {
+                    System.out.println("[ID #"+veh.getId()+" ] | [Tipo: "+veh.getTipoVehiculo()+" ] | [Modelo: "+veh.getModelo()+" ]");
+                });
+    }
+
     public void monitorearFlota() {
         flota.forEach(vehicl -> {
             vehicl.patronMovimiento();
