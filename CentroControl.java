@@ -42,6 +42,33 @@ public class CentroControl {
         flota.remove(buscarVehiculo(id));
     }
 
+    // STREAMS
+    public void mostrarConectables(){
+        System.out.println(" Vehiculos conectables:");
+        flota.stream().filter(veh ->
+            veh instanceof IConectable).forEach(veh ->
+                System.out.println("[ID #"+veh.getId()+" ] | [Tipo: "+veh.getTipoVehiculo()+" ] | [Modelo: "+veh.getModelo()+" ]")
+        );
+    }
+
+    public void listaId(){
+        System.out.println(" Lista de Id's:");
+        flota.stream()
+                .map( veh -> veh.getId())
+                .forEach(id ->
+                    System.out.println(id)
+                );
+    }
+
+    public long contarVehiculos(){
+        return flota.stream().count();
+    }
+
+    public void buscarVehiculoPorTipo(String tipo){
+        flota.stream().filter(veh -> veh.getTipoVehiculo().equalsIgnoreCase(tipo))
+                .forEach(veh -> System.out.println("[ID #"+veh.getId()+" ] | [Tipo: "+veh.getTipoVehiculo()+" ] | [Modelo: "+veh.getModelo()+" ]"));
+    }
+    
     public void monitorearFlota() {
         flota.forEach(vehicl -> {
             vehicl.patronMovimiento();
